@@ -1,0 +1,80 @@
+/* styles/globals.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap");
+
+/* ─── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── CSS Variables ──────────────────────────────────────── */
+:root {
+  --green: #00ff9d;
+  --green-dim: #00cc7a;
+  --green-faint: rgba(0, 255, 157, 0.06);
+  --green-mid: rgba(0, 255, 157, 0.15);
+  --green-glow: 0 0 8px rgba(0, 255, 157, 0.5), 0 0 24px rgba(0, 255, 157, 0.2);
+  --green-glow-sm: 0 0 6px rgba(0, 255, 157, 0.4);
+
+  --amber: #ffb800;
+  --red: #ff4444;
+  --blue: #00aaff;
+
+  --bg-base: #010a04;
+  --bg-panel: #020f07;
+  --bg-header: rgba(0, 20, 10, 0.9);
+
+  --border: rgba(0, 255, 157, 0.15);
+  --border-hover: rgba(0, 255, 157, 0.3);
+  --border-active: rgba(0, 255, 157, 0.6);
+
+  --text-primary: #d0ffe8;
+  --text-secondary: rgba(0, 255, 157, 0.5);
+  --text-dim: rgba(0, 255, 157, 0.3);
+
+  --font-mono: "Share Tech Mono", "Courier New", monospace;
+  --font-head: "Orbitron", monospace;
+
+  --radius: 3px;
+  --header-h: 46px;
+  --footer-h: 28px;
+  --input-h: 56px;
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ─── Selection ──────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 255, 157, 0.2);
+  color: var(--green);
+}
