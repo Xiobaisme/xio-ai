@@ -40,3 +40,18 @@ button {
   padding: 10px;
   cursor: pointer;
 }
+
+/* Hacker vibe blink cursor */
+#input::placeholder {
+  color: #00ff00;
+  opacity: 0.5;
+}
+
+input {
+  caret-color: #00ff00;
+}
+
+img {
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+}
