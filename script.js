@@ -11,23 +11,25 @@ function addMessage(text, sender) {
 async function send() {
   const input = document.getElementById("input");
   const text = input.value;
-
   if (!text) return;
 
   addMessage(text, "user");
   input.value = "";
+  addMessage("...", "ai"); // placeholder sementara
 
-  addMessage("...", "ai");
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ message: text })
+    });
 
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ message: text })
-  });
+    const data = await res.json();
+    chat.lastChild.remove(); // hapus "..."
+    addMessage(data.reply, "ai");
 
-  const data = await res.json();
-
-  chat.lastChild.remove(); // hapus "..."
-
-  addMessage(data.reply, "ai");
+  } catch (e) {
+    chat.lastChild.remove();
+    addMessage("⚠️ Error: Tidak bisa connect ke backend", "ai");
+  }
 }
