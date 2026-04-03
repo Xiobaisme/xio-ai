@@ -11,18 +11,10 @@ body {
   overflow-y: auto;
 }
 
-.msg {
-  margin-bottom: 15px;
-}
+.msg { margin-bottom: 15px; }
 
-.user {
-  color: #00ff00;
-}
-
-.ai {
-  color: #00ff00;
-  opacity: 0.8;
-}
+.user { color: #00ff00; }
+.ai { color: #00ff00; opacity: 0.8; }
 
 #input-area {
   position: fixed;
