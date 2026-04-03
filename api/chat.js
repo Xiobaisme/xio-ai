@@ -1,6 +1,7 @@
 export default async function handler(req, res) {
   const API_KEY = process.env.OPENROUTER_API_KEY;
 
+  if (!API_KEY) return res.status(500).json({ reply: "⚠️ API Key belum diset" });
   if (req.method !== "POST") return res.status(405).send("Method not allowed");
 
   const { message } = req.body;
@@ -15,19 +16,23 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: "claude-3.6",
         messages: [
-          { role: "user", content: `Kamu adalah AI coding assistant. Bisa jawab teks dan jika perlu kirim link gambar PNG/JPG dengan format: !img <URL>\n\nUser: ${message}` }
+          { role: "user", content: message }
         ],
-        max_tokens: 500
+        max_tokens: 300
       })
     });
 
     const data = await response.json();
+
+    // debug
+    console.log("OpenRouter response:", data);
+
     const aiReply = data?.choices?.[0]?.message?.content ?? "⚠️ AI tidak merespon";
 
     res.status(200).json({ reply: aiReply });
 
   } catch (error) {
-    console.error(error);
+    console.error("ERROR OPENROUTER:", error);
     res.status(500).json({ reply: "⚠️ Error: OpenRouter API tidak bisa diakses" });
   }
 }
