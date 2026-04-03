@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       headers: {
         "x-api-key": API_KEY,
         "anthropic-version": "2023-06-01",
-        "content-type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-latest",
@@ -32,11 +32,13 @@ User: ${message}`
 
     const data = await response.json();
 
-    res.status(200).json({
-      reply: data.content[0].text
-    });
+    // Claude API terbaru biasanya ada di data.completion.content
+    const aiReply = data.completion?.content ?? "⚠️ Claude tidak merespon";
+
+    res.status(200).json({ reply: aiReply });
 
   } catch (error) {
-    res.status(500).json({ error: "API error" });
+    console.error(error);
+    res.status(500).json({ reply: "⚠️ Error: Claude API tidak bisa diakses" });
   }
 }
