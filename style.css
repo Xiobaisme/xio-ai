@@ -1,0 +1,50 @@
+body {
+  background: #000;
+  color: #00ff00;
+  font-family: monospace;
+  margin: 0;
+}
+
+#chat {
+  padding: 20px;
+  height: 90vh;
+  overflow-y: auto;
+}
+
+.msg {
+  margin-bottom: 15px;
+}
+
+.user {
+  color: #00ff00;
+}
+
+.ai {
+  color: #00ff00;
+  opacity: 0.8;
+}
+
+#input-area {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #00ff00;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  background: black;
+  color: #00ff00;
+  border: none;
+  outline: none;
+}
+
+button {
+  background: black;
+  color: #00ff00;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
