@@ -15,9 +15,9 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: "claude-3.6",
         messages: [
-          { role: "user", content: `Kamu adalah AI coding assistant. Jawab singkat.\n\nUser: ${message}` }
+          { role: "user", content: `Kamu adalah AI coding assistant. Bisa jawab teks dan jika perlu kirim link gambar PNG/JPG dengan format: !img <URL>\n\nUser: ${message}` }
         ],
-        max_tokens: 300
+        max_tokens: 500
       })
     });
 
